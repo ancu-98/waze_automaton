@@ -4,7 +4,11 @@ from tkinter import scrolledtext
 
 # Importar objeto de maquina de Turing creado
 from DTM import dtm
+# Importar automata celular que simula trafico en una red de nodos
 from CellularAutomata import TrafficCellularAutomata
+# Importar generador de ruta optima en el mapa de fusagasugá
+from MapGenerator import OptimalRouteGeneratorMap
+
 
 # Funcion para generar un string aleatorio de 0s y 1s con longitud aleatoria (máximo 12 caracteres)
 def generar_string():
@@ -44,6 +48,8 @@ print(f"Input string generado: {input_str}")
 #print(dtm.read_input(input_str))
 
 cellularAutomata = TrafficCellularAutomata()
+mapGenerator = OptimalRouteGeneratorMap()
+
 
 # Numero de 1 y 0 que contiene el string
 num_ceros = 0
@@ -64,9 +70,11 @@ if __name__ == "__main__":
         print('String Aceptado')
         show_transitions_in_window(dtm.transitions)
         cellularAutomata.simulate(input_str)
+        mapGenerator.generate_optimal_route(input_str)
     elif pariedad_ceros == 0:
         print('String Aceptado')
         show_transitions_in_window(dtm.transitions)
         cellularAutomata.simulate(input_str)
+        mapGenerator.generate_optimal_route(input_str)
     else:
         print('String Rechazado')
