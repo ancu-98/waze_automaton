@@ -1,5 +1,4 @@
 from automata.tm.dtm import DTM
-import random
 
 # DTM que
 '''
@@ -87,40 +86,3 @@ dtm = DTM(
     blank_symbol='.',
     final_states={'ACCEPT', 'REJECT'}
 )
-
-# Generar un string aleatorio de 0s y 1s con longitud aleatoria (máximo 12 caracteres)
-def generar_string():
-    longitud = random.randint(2, 12)
-    return ''.join(random.choice(['0', '1']) for _ in range(longitud))
-
-# Generar un string de entrada aleatorio y probarlo paso a paso
-input_str = generar_string()
-print(f"Input string generado: {input_str}")
-
-# ----- Procesar el string de entrada y determinar el resultado
-print(dtm.read_input(input_str))
-
-# Numero de 1 y 0 que contiene el string
-num_ceros = 0
-num_unos = 0
-
-for i in input_str:
-    if i == '0':
-        num_ceros += 1
-    elif i == '1':
-        num_unos += 1
-
-# print(num_ceros)
-# print(num_unos)
-
-pariedad_unos = num_unos % 2
-pariedad_ceros = num_ceros % 2
-
-if pariedad_unos == 0:
-    print('String Aceptado')
-elif pariedad_ceros == 0:
-    print('String Aceptado')
-else:
-    print('String Rechazado')
-
-print(dtm.transitions)

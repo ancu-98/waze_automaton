@@ -161,12 +161,13 @@ class TrafficCellularAutomata:
 
         # Mostrar resultados finales
         weights = self.get_graph_weights()
+        min_weight = min(weights) # Encontrar el menor peso
+        min_weight_graph = weights.index(min_weight) + 1
+
+        # Imprimir pesos de cada grafo
         for i in range(len(self.graphs)):
             print(f"Grafo {i+1} - Peso total: {weights[i]}")
             self.visualize_graph(i)
 
-# Ejemplo de uso:
-automata = TrafficCellularAutomata()
-# Ejemplo de string aceptado por la máquina de Turing
-turing_string = "000010101111"
-automata.simulate(turing_string)
+        # Imprimir el grafo con menor peso
+        print(f"El grafo con menor peso es: Grafo {min_weight_graph} con un peso total de {min_weight}")
